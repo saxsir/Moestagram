@@ -58,6 +58,10 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="Uyc-a9-seO"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="tF5-aH-exT"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -66,7 +70,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="gXK-ek-2Ik" id="7Au-Os-9GX"/>
-                        <outlet property="launchCameraButton" destination="3QU-9W-WFA" id="Yhx-Gy-lvM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
