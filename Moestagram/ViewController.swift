@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -15,6 +16,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      */
     @IBOutlet weak var launchCameraButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    /*
+     * 全体で使う変数はこちら
+     */
+    var photoAssets = [PHAsset]()
 
     // カメラボタンが押された時に呼ばれる（ようにMain.storyboardで設定した）
     @IBAction func launchCameraButtonTapped(sender: UIBarButtonItem) {
@@ -47,14 +53,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return photoAssets.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         // セル番号でセルを取り出す
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as PhotoCell
-        let image = UIImage(named: "Logo_Apple.jpg")
-        cell.imageView.image = image
+
+        let asset = photoAssets[indexPath.row]
+        let imageView = cell.viewWithTag(1) as UIImageView
+        let manager: PHImageManager = PHImageManager()
+        manager.requestImageForAsset(asset,
+            targetSize: imageView.frame.size,
+            contentMode: .AspectFill,
+            options: nil) { (image, info) -> Void in
+                imageView.image = image
+        }
         return cell
     }
 
@@ -65,6 +79,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        var options = PHFetchOptions()
+        options.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: false)
+        ]
+        var assets: PHFetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
+        assets.enumerateObjectsUsingBlock { (asset, index, stop) -> Void in
+            self.photoAssets.append(asset as PHAsset)
+        }
     }
 
     override func didReceiveMemoryWarning() {
