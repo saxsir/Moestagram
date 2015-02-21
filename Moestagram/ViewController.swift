@@ -63,16 +63,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
-
         let asset = self.photoAssets.objectAtIndex(indexPath.row) as PHAsset
         let imageView = cell.viewWithTag(1) as UIImageView
         let manager: PHImageManager = PHImageManager()
+
         manager.requestImageForAsset(asset,
             targetSize: imageView.frame.size,
             contentMode: .AspectFill,
             options: nil) { (image, info) -> Void in
                 imageView.image = image
         }
+
         return cell
     }
     
