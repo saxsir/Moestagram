@@ -19,6 +19,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Moestagramで撮った写真一覧を取得
         self.photoAssets = fetchPhotosTakenWithMoestagram()
+        
+        // コレクションビューをリロード
+        collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
