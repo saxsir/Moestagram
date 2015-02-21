@@ -61,7 +61,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         let asset = photoAssets[indexPath.row]
         let imageView = cell.viewWithTag(1) as UIImageView
-
         let manager: PHImageManager = PHImageManager()
         manager.requestImageForAsset(asset,
             targetSize: imageView.frame.size,
@@ -76,10 +75,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
+
         var options = PHFetchOptions()
         options.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
