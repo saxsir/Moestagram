@@ -13,6 +13,7 @@
 		E5742B601A984A5200369BD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5742B5F1A984A5200369BD7 /* Images.xcassets */; };
 		E5742B631A984A5200369BD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5742B611A984A5200369BD7 /* LaunchScreen.xib */; };
 		E5742B6F1A984A5300369BD7 /* MoestagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B6E1A984A5300369BD7 /* MoestagramTests.swift */; };
+		E5742B831A9878EE00369BD7 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B821A9878EE00369BD7 /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		E5742B681A984A5300369BD7 /* MoestagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoestagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5742B6D1A984A5300369BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5742B6E1A984A5300369BD7 /* MoestagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoestagramTests.swift; sourceTree = "<group>"; };
+		E5742B821A9878EE00369BD7 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				E5742B5F1A984A5200369BD7 /* Images.xcassets */,
 				E5742B611A984A5200369BD7 /* LaunchScreen.xib */,
 				E5742B561A984A5200369BD7 /* Supporting Files */,
+				E5742B821A9878EE00369BD7 /* PhotoCell.swift */,
 			);
 			path = Moestagram;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5742B5B1A984A5200369BD7 /* ViewController.swift in Sources */,
+				E5742B831A9878EE00369BD7 /* PhotoCell.swift in Sources */,
 				E5742B591A984A5200369BD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +409,7 @@
 				E5742B741A984A5300369BD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5742B751A984A5300369BD7 /* Build configuration list for PBXNativeTarget "MoestagramTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				E5742B771A984A5300369BD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
