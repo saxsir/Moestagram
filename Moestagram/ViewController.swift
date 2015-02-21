@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
     }
     
-    /*
+    /**
      * カメラ周りの機能
      */
     // カメラボタンが押された時に呼ばれる（ようにMain.storyboardで設定した）
@@ -50,7 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
+    /**
      * コレクションビュー周りの機能
      */
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
