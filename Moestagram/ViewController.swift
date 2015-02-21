@@ -11,7 +11,6 @@ import Photos
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var launchCameraButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     var photoAssets = [PHAsset]()
 
