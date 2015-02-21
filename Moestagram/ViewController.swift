@@ -76,14 +76,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        var options = PHFetchOptions()
-        options.sortDescriptors = [
-            NSSortDescriptor(key: "creationDate", ascending: false)
-        ]
-        var assets: PHFetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
-        assets.enumerateObjectsUsingBlock { (asset, index, stop) -> Void in
-            self.photoAssets.append(asset as PHAsset)
-        }
+        // Moestagramで撮った写真一覧を取得
+        self.photoAssets = fetchPhotosTakenWithMoestagram()
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,6 +85,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
 
+    private func fetchPhotosTakenWithMoestagram() -> [PHAsset] {
+        var photoAssets = [PHAsset]()
+
+        var options = PHFetchOptions()
+        options.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: false)
+        ]
+        var assets: PHFetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
+        assets.enumerateObjectsUsingBlock { (asset, index, stop) -> Void in
+            photoAssets.append(asset as PHAsset)
+        }
+        return photoAssets
+    }
 
 }
 
