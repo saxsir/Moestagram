@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var launchCameraButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
