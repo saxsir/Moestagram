@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      * Main.storyboardとの接続周りはこちら
      */
     @IBOutlet weak var launchCameraButton: UIBarButtonItem!
-
+    @IBOutlet weak var collectionView: UICollectionView!
 
     // カメラボタンが押された時に呼ばれる（ようにMain.storyboardで設定した）
     @IBAction func launchCameraButtonTapped(sender: UIBarButtonItem) {
