@@ -19,7 +19,9 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-4v-Sr9">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tgq-fu-8SQ"/>
                                     <barButtonItem systemItem="camera" id="3QU-9W-WFA"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gqk-sU-cAe"/>
                                 </items>
                             </toolbar>
                         </subviews>
