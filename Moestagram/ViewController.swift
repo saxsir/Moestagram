@@ -12,7 +12,7 @@ import Photos
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var photoAssets = [PHAsset]()
+    var photoAssets = PHFetchResult()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
 
-        let asset = photoAssets[indexPath.row]
+        let asset = self.photoAssets.objectAtIndex(indexPath.row) as PHAsset
         let imageView = cell.viewWithTag(1) as UIImageView
         let manager: PHImageManager = PHImageManager()
         manager.requestImageForAsset(asset,
@@ -83,18 +83,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /**
      * プライベートメソッド
      */
-    private func fetchPhotosTakenWithMoestagram() -> [PHAsset] {
-        var photoAssets = [PHAsset]()
-
+    private func fetchPhotosTakenWithMoestagram() -> PHFetchResult {
         var options = PHFetchOptions()
+        // 日付が新しい順にソートして取得する
         options.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]
-        var assets: PHFetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
-        assets.enumerateObjectsUsingBlock { (asset, index, stop) -> Void in
-            photoAssets.append(asset as PHAsset)
-        }
-        return photoAssets
+
+        return PHAsset.fetchAssetsWithMediaType(.Image, options: options)
     }
 
 }
