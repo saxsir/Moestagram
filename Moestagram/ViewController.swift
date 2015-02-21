@@ -33,15 +33,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      */
     // カメラボタンが押された時に呼ばれる（ようにMain.storyboardで設定した）
     @IBAction func launchCameraButtonTapped(sender: UIBarButtonItem) {
-        let camera = UIImagePickerControllerSourceType.Camera
-
-        if (UIImagePickerController.isSourceTypeAvailable(camera)) {
-            var picker = UIImagePickerController()
-            picker.sourceType = camera
-            // refs http://qiita.com/zucay/items/03080645dde1a62ec570
-            picker.delegate = self //pickerさん、何かあったら私（ViewController）を呼んでね
-            picker.allowsEditing = false
-            self.presentViewController(picker, animated: true, completion: nil)
+        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            launchCamera()
         } else {
             // refs http://tech.eversense.co.jp/23
             var alert = UIAlertController(title: "Error", message: "There is no camera available", preferredStyle: .Alert)
@@ -86,6 +79,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /**
      * プライベートメソッド
      */
+    private func launchCamera() -> Void {
+        var picker = UIImagePickerController()
+        picker.sourceType = .Camera
+        picker.delegate = self //pickerさん、何かあったら私（ViewController）を呼んでね
+        picker.allowsEditing = false
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+
     private func fetchPhotosTakenWithMoestagram() -> PHFetchResult {
         var options = PHFetchOptions()
         // 日付が新しい順にソートして取得する
