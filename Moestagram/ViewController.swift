@@ -57,11 +57,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        // セル番号でセルを取り出す
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as PhotoCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
 
         let asset = photoAssets[indexPath.row]
         let imageView = cell.viewWithTag(1) as UIImageView
+
         let manager: PHImageManager = PHImageManager()
         manager.requestImageForAsset(asset,
             targetSize: imageView.frame.size,

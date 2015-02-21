@@ -13,7 +13,6 @@
 		E5742B601A984A5200369BD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5742B5F1A984A5200369BD7 /* Images.xcassets */; };
 		E5742B631A984A5200369BD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5742B611A984A5200369BD7 /* LaunchScreen.xib */; };
 		E5742B6F1A984A5300369BD7 /* MoestagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B6E1A984A5300369BD7 /* MoestagramTests.swift */; };
-		E5742B831A9878EE00369BD7 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B821A9878EE00369BD7 /* PhotoCell.swift */; };
 		E5742B871A98837500369BD7 /* Logo_Apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5742B861A98837500369BD7 /* Logo_Apple.jpg */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +37,6 @@
 		E5742B681A984A5300369BD7 /* MoestagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoestagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5742B6D1A984A5300369BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5742B6E1A984A5300369BD7 /* MoestagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoestagramTests.swift; sourceTree = "<group>"; };
-		E5742B821A9878EE00369BD7 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		E5742B861A98837500369BD7 /* Logo_Apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Logo_Apple.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +86,6 @@
 				E5742B5F1A984A5200369BD7 /* Images.xcassets */,
 				E5742B611A984A5200369BD7 /* LaunchScreen.xib */,
 				E5742B561A984A5200369BD7 /* Supporting Files */,
-				E5742B821A9878EE00369BD7 /* PhotoCell.swift */,
 			);
 			path = Moestagram;
 			sourceTree = "<group>";
@@ -220,7 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5742B5B1A984A5200369BD7 /* ViewController.swift in Sources */,
-				E5742B831A9878EE00369BD7 /* PhotoCell.swift in Sources */,
 				E5742B591A984A5200369BD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
