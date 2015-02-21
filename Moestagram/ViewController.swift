@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var launchCameraButton: UIBarButtonItem!
 
+    @IBAction func launchCameraButtonTapped(sender: UIBarButtonItem) {
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -20,7 +20,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tgq-fu-8SQ"/>
-                                    <barButtonItem systemItem="camera" id="3QU-9W-WFA"/>
+                                    <barButtonItem systemItem="camera" id="3QU-9W-WFA">
+                                        <connections>
+                                            <action selector="launchCameraButtonTapped:" destination="vXZ-lx-hvc" id="GTA-IP-u5R"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gqk-sU-cAe"/>
                                 </items>
                             </toolbar>
