@@ -13,6 +13,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var launchCameraButton: UIBarButtonItem!
 
     @IBAction func launchCameraButtonTapped(sender: UIBarButtonItem) {
+        let camera = UIImagePickerControllerSourceType.Camera
+
+        if (UIImagePickerController.isSourceTypeAvailable(camera)) {
+            println("camera is available")
+        } else {
+            println("no camera available")
+        }
     }
 
     override func viewDidLoad() {
