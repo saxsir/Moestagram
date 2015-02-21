@@ -11,17 +11,24 @@ import Photos
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    /*
-     * Main.storyboardとの接続周りはこちら
-     */
     @IBOutlet weak var launchCameraButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    /*
-     * 全体で使う変数はこちら
-     */
     var photoAssets = [PHAsset]()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Moestagramで撮った写真一覧を取得
+        self.photoAssets = fetchPhotosTakenWithMoestagram()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    /*
+     * カメラ周りの機能
+     */
     // カメラボタンが押された時に呼ばれる（ようにMain.storyboardで設定した）
     @IBAction func launchCameraButtonTapped(sender: UIBarButtonItem) {
         let camera = UIImagePickerControllerSourceType.Camera
@@ -48,6 +55,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    /*
+     * コレクションビュー周りの機能
+     */
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -70,21 +80,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         return cell
     }
-
-    // アプリが起動して画面がロードされたら呼ばれる
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
-        // Moestagramで撮った写真一覧を取得
-        self.photoAssets = fetchPhotosTakenWithMoestagram()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    /**
+     * プライベートメソッド
+     */
     private func fetchPhotosTakenWithMoestagram() -> [PHAsset] {
         var photoAssets = [PHAsset]()
 
@@ -100,4 +99,3 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
 }
-
