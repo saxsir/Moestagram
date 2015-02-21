@@ -18,7 +18,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (UIImagePickerController.isSourceTypeAvailable(camera)) {
             println("camera is available")
         } else {
-            println("no camera available")
+            // refs http://tech.eversense.co.jp/23
+            var alert = UIAlertController(title: "Error", message: "There is no camera available", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 
