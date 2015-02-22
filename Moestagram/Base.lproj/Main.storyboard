@@ -75,10 +75,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="a61-hE-Cuf">
             <objects>
-                <viewController id="XYx-dw-0qT" sceneMemberID="viewController">
+                <viewController id="XYx-dw-0qT" customClass="ImageViewController" customModule="Moestagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="npW-iW-Neo"/>
                         <viewControllerLayoutGuide type="bottom" id="rqt-FA-77J"/>
@@ -95,6 +95,9 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="t8q-pz-DXD" id="QoQ-we-NZG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILk-s3-qwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
