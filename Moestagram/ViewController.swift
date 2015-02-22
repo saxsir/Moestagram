@@ -46,8 +46,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // imagePickerControllerさんが写真が撮影されたら呼んでくれる（そういう決まり）
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as UIImage
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(image, self, "didFinishSavingImage:didFinishSavingWithError:contextInfo:", nil)
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // 写真の保存が完了したら呼んでくれる
+    func didFinishSavingImage(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) -> Void {
+        self.viewDidLoad()
     }
     
     /**
@@ -97,5 +102,4 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         return PHAsset.fetchAssetsWithMediaType(.Image, options: options)
     }
-
 }
