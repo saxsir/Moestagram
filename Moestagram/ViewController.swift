@@ -82,6 +82,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) -> Void {
+
+        /*
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
+        let asset = self.photoAssets.objectAtIndex(indexPath.row) as PHAsset
+        let imageView = cell.viewWithTag(1) as UIImageView
+        */
+        
+        println("cell tapped")
+    }
+
     /**
      * プライベートメソッド
      */
