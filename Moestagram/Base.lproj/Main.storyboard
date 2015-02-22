@@ -56,6 +56,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="XYx-dw-0qT" kind="presentation" id="acq-bK-0Zg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
