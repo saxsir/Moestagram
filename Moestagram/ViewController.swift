@@ -77,6 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             targetSize: imageView.frame.size,
             contentMode: .AspectFill,
             options: nil) { (image, info) -> Void in
+                imageView.contentMode = .ScaleAspectFill
                 imageView.image = image
         }
 
