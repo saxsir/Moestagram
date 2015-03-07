@@ -83,14 +83,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) -> Void {
-
-        /*
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
-        let asset = self.photoAssets.objectAtIndex(indexPath.row) as PHAsset
-        let imageView = cell.viewWithTag(1) as UIImageView
-        */
-        
         println("cell tapped")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "imageTappedSegue") {
+            let imageViewController: ImageViewController = segue.destinationViewController as ImageViewController
+            imageViewController.asset = self.photoAssets.objectAtIndex(0) as PHAsset
+        }
     }
 
     /**

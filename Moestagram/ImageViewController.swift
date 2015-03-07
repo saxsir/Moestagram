@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Photos
 
 class ImageViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
 
+    var asset = PHAsset()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let manager: PHImageManager = PHImageManager()
+        manager.requestImageForAsset(asset,
+            targetSize: imageView.frame.size,
+            contentMode: .AspectFill,
+            options: nil) { (image, info) -> Void in
+                self.imageView.image = image
+        }
     }
 
     override func didReceiveMemoryWarning() {
