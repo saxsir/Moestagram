@@ -90,6 +90,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as PHAsset
         }
     }
+    
+    @IBAction func backFromImageView(segue:UIStoryboardSegue){
+    }
 
     /**
      * プライベートメソッド
