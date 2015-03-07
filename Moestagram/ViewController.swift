@@ -13,6 +13,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var collectionView: UICollectionView!
     var photoAssets = PHFetchResult()
+    var tappedCellIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,14 +83,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) -> Void {
-        println("cell tapped")
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let selectedIndex = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]
         if (segue.identifier == "imageTappedSegue") {
             let imageViewController: ImageViewController = segue.destinationViewController as ImageViewController
-            imageViewController.asset = self.photoAssets.objectAtIndex(0) as PHAsset
+            imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as PHAsset
         }
     }
 
