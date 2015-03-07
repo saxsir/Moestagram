@@ -19,10 +19,12 @@ class ImageViewController: UIViewController {
         super.viewDidLoad()
         
         let manager: PHImageManager = PHImageManager()
-        manager.requestImageForAsset(asset,
+        manager.requestImageForAsset(
+            asset,
             targetSize: imageView.frame.size,
-            contentMode: .AspectFill,
+            contentMode: .AspectFit,
             options: nil) { (image, info) -> Void in
+                self.imageView.contentMode = .ScaleAspectFit
                 self.imageView.image = image
         }
     }
