@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var photoAssets = PHFetchResult()
@@ -18,15 +18,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Moestagramで撮った写真一覧を取得
-        self.photoAssets = fetchPhotosTakenWithMoestagram()
-        
-        // コレクションビューをリロード
-        collectionView.reloadData()
+        if PHPhotoLibrary.authorizationStatus() == .Authorized {
+            self.photoAssets = fetchPhotosTakenWithMoestagram()
+            println("fetch photos taken with moestagram")
+            
+            collectionView.reloadData()
+            println("reload collection view")
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // 初回起動時のみWelcomeViewControllerに遷移
+        if NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") == false {
+            println("move to Welcome View")
+            self.performSegueWithIdentifier("firstLaunchSegue", sender: self)
+        }
     }
     
     /**
@@ -64,7 +74,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.photoAssets.count
+        if PHPhotoLibrary.authorizationStatus() == .Authorized {
+            return self.photoAssets.count
+        } else {
+            return 0
+        }
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -85,14 +99,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        let selectedIndex = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]
         if (segue.identifier == "imageTappedSegue") {
+            let selectedIndex = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]
             let imageViewController: ImageViewController = segue.destinationViewController as ImageViewController
             imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as PHAsset
+        } else if (segue.identifier == "firstLaunchSegue") {
+            let welcomeViewController: WelcomeViewController = segue.destinationViewController as WelcomeViewController
         }
     }
     
     @IBAction func backFromImageView(segue:UIStoryboardSegue){
+        self.viewDidLoad()
+    }
+    @IBAction func backFromWelcomeView(segue:UIStoryboardSegue){
+        self.viewDidLoad()
     }
 
     /**

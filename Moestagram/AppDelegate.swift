@@ -16,14 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // ローカル通知の許可をください
-        let settings = UIUserNotificationSettings(
-            forTypes: UIUserNotificationType.Badge
-                | UIUserNotificationType.Sound
-                | UIUserNotificationType.Alert,
-            categories: nil)
-        application.registerUserNotificationSettings(settings)
-        
+        // 初回起動判定
+        if NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") == false {
+            //TODO: これだと初回起動した瞬間にダイアログが出るので、タイミングを変えたい
+            // push通知（ローカル）の許可をもらう
+            requestUserNotificationPermission(application)
+            println("requestUserNotificationPermission")
+        }
+
         return true
     }
 
@@ -109,5 +109,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notification.alertAction = "OK"
         notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+    
+    func requestUserNotificationPermission(application: UIApplication) {
+        //TODO: 許可がもらえなかった場合の処理を追加する
+        let settings = UIUserNotificationSettings( forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert, categories: nil)
+        application.registerUserNotificationSettings(settings)
     }
 }
