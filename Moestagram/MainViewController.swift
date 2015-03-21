@@ -89,10 +89,16 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if (segue.identifier == "imageTappedSegue") {
             let imageViewController: ImageViewController = segue.destinationViewController as ImageViewController
             imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as PHAsset
+        } else if (segue.identifier == "firstLaunchSegue") {
+            let welcomeViewController: WelcomeViewController = segue.destinationViewController as WelcomeViewController
         }
     }
     
     @IBAction func backFromImageView(segue:UIStoryboardSegue){
+        self.viewDidLoad()
+    }
+    @IBAction func backFromWelcomeView(segue:UIStoryboardSegue){
+        self.viewDidLoad()
     }
 
     /**
