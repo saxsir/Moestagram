@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 登録されている通知を全てキャンセル
         UIApplication.sharedApplication().cancelAllLocalNotifications()
+        println("cancel all local notifications")
 
         // 新しくPush通知（ローカル）を登録する - 1週間分、毎日ランダムな時間に。
         scheduleDailyNotificationForOneWeek()
@@ -61,12 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     // アプリ起動中に通知がきたらアプリ上に表示する
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        
         var alert = UIAlertView()
         alert.title = "通知タイトル"
         alert.message = notification.alertBody
         alert.addButtonWithTitle(notification.alertAction!)
         alert.show()
+        
+        println("show alert when notification fired while app using")
     }
 
     /**
@@ -79,6 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let alertBody = "通知本文"
             addLocalNotification(fireDate, alertBody: alertBody)
         }
+        
+        println("register local notification")
     }
 
     // x日後のランダムな時刻の日付オブジェクトを返す関数
