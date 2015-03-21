@@ -56,9 +56,11 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     // imagePickerControllerさんが写真が撮影されたら呼んでくれる（そういう決まり）
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+
+        // 画像をカメラロールに保存
         let image = info[UIImagePickerControllerOriginalImage] as UIImage
         UIImageWriteToSavedPhotosAlbum(image, self, "didFinishSavingImage:didFinishSavingWithError:contextInfo:", nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // 写真の保存が完了したら呼んでくれる
