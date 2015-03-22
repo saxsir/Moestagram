@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import Foundation
 
 class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -61,10 +62,18 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // 画像をカメラロールに保存
         let image = info[UIImagePickerControllerOriginalImage] as UIImage
         UIImageWriteToSavedPhotosAlbum(image, self, "didFinishSavingImage:didFinishSavingWithError:contextInfo:", nil)
+        
+        //TODO: パスをアプリ全体で共有するようにする
+        // 画像をMoestagramフォルダに保存
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let createPath = documentsPath + "/MoestagramPhotos/test.jpg"
+        let imgData = UIImageJPEGRepresentation(image, 1.0)
+        NSFileManager.defaultManager().createFileAtPath(createPath, contents: imgData, attributes: nil)
     }
     
     // 写真の保存が完了したら呼んでくれる
     func didFinishSavingImage(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) -> Void {
+        // 画面をリロード
         self.viewDidLoad()
     }
     
