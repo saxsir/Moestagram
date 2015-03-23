@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import Foundation
+import CoreData
 
 class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -74,6 +75,20 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // 写真の保存が完了したら呼んでくれる
     func didFinishSavingImage(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) -> Void {
+        // 最後に撮った画像のidをDBに保存する
+        var options = PHFetchOptions()
+        options.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: false)
+        ]
+        let asset = PHAsset.fetchAssetsWithMediaType(.Image, options: options).firstObject as PHAsset
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let photoContext: NSManagedObjectContext = appDel.managedObjectContext!
+        let photoEntity: NSEntityDescription! = NSEntityDescription.entityForName("PhotoStore", inManagedObjectContext: photoContext)
+        var newData = PhotoStore(entity: photoEntity, insertIntoManagedObjectContext: photoContext)
+        newData.local_identifier = asset.localIdentifier
+        var err: NSError? = nil
+        photoContext.save(&err)
+        
         // 画面をリロード
         self.viewDidLoad()
     }
@@ -139,12 +154,32 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     private func fetchPhotosTakenWithMoestagram() -> PHFetchResult {
+        // Moestagramで撮影した画像のid一覧を取得する
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let photoContext: NSManagedObjectContext = appDel.managedObjectContext!
+        let photoRequest: NSFetchRequest = NSFetchRequest(entityName: "PhotoStore")
+        photoRequest.returnsObjectsAsFaults = false
+        var results: NSArray! = photoContext.executeFetchRequest(photoRequest, error: nil)
+        
+        var local_identifiers: [NSString] = []
+        
+        for data in results {
+            local_identifiers.append(data.local_identifier)
+        }
+        
+        println(local_identifiers)
+
         var options = PHFetchOptions()
         // 日付が新しい順にソートして取得する
         options.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]
-
-        return PHAsset.fetchAssetsWithMediaType(.Image, options: options)
+        
+        if local_identifiers.count > 0 {
+            return PHAsset.fetchAssetsWithLocalIdentifiers(local_identifiers, options: options)
+        } else {
+            // TODO: 本当は return PHFetchResult() したいが、self.photoAssets.countでエラーになるのでとりあえずこうしとく
+            return PHAsset.fetchAssetsWithMediaType(.Image, options: options)
+        }
     }
 }
