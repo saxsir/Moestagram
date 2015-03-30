@@ -13,6 +13,14 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let predefinedMessages = [
+        "空を背景に写真を撮ってみよう！",
+        "海を背景に写真を撮ってみよう！",
+        "山を背景に写真を撮ってみよう！",
+        "川を背景に写真を撮ってみよう！",
+        "建物を背景に写真を撮ってみよう！"
+    ]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,8 +31,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // push通知（ローカル）の許可をもらう
             requestUserNotificationPermission(application)
             println("requestUserNotificationPermission")
-        }
+            
+            let messages = shuffle(predefinedMessages)
 
+            for i in 0..<messages.count {
+                //let fireDate = generateRandomTimeInXDays(i)
+
+                // DEBUG: i*5秒後に通知をセット
+                let fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(5 * (i+1)))
+
+                let alertTitle = "研究協力( ｀・∀・´)ﾉﾖﾛｼｸ"
+                let alertBody = messages[i]
+                addLocalNotification(fireDate, alertTitle: alertTitle, alertBody: alertBody)
+            }
+        }
+        
         return true
     }
 
@@ -38,11 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 
         // 登録されている通知を全てキャンセル
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
-        println("cancel all local notifications")
+        //UIApplication.sharedApplication().cancelAllLocalNotifications()
+        //println("cancel all local notifications")
 
         // 新しくPush通知（ローカル）を登録する - 1週間分、毎日ランダムな時間に。
-        scheduleDailyNotificationForOneWeek()
+        //scheduleDailyNotificationForOneWeek()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -129,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // アプリ起動中に通知がきたらアプリ上に表示する
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         var alert = UIAlertView()
-        alert.title = "通知タイトル"
+        alert.title = notification.alertTitle
         alert.message = notification.alertBody
         alert.addButtonWithTitle(notification.alertAction!)
         alert.show()
@@ -172,9 +193,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // ローカル通知を登録する関数
-    func addLocalNotification(fireDate: NSDate, alertBody: String) {
+    func addLocalNotification(fireDate: NSDate, alertTitle: String, alertBody: String) {
         var notification = UILocalNotification()
         notification.fireDate = fireDate
+        notification.alertTitle = alertTitle
         notification.alertBody = alertBody
         notification.alertAction = "OK"
         notification.soundName = UILocalNotificationDefaultSoundName
@@ -185,5 +207,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: 許可がもらえなかった場合の処理を追加する
         let settings = UIUserNotificationSettings( forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert, categories: nil)
         application.registerUserNotificationSettings(settings)
+    }
+    
+    // cf. http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
+    func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
+        let count = countElements(list)
+        for i in 0..<(count - 1) {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            swap(&list[i], &list[j])
+        }
+        return list
     }
 }
