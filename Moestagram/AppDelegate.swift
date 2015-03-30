@@ -57,13 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-
-        // 登録されている通知を全てキャンセル
-        //UIApplication.sharedApplication().cancelAllLocalNotifications()
-        //println("cancel all local notifications")
-
-        // 新しくPush通知（ローカル）を登録する - 1週間分、毎日ランダムな時間に。
-        //scheduleDailyNotificationForOneWeek()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -161,16 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /**
      * プライベートメソッド
      */
-    // 1週間分のデイリー通知を登録する関数
-    func scheduleDailyNotificationForOneWeek() {
-        for i in 1...1 {
-            let fireDate = generateRandomTimeInXDays(i)
-            let alertBody = "通知本文"
-            addLocalNotification(fireDate, alertBody: alertBody)
-        }
-        
-        println("register local notification")
-    }
 
     // x日後のランダムな時刻の日付オブジェクトを返す関数
     func generateRandomTimeInXDays(x: Int) -> NSDate {
@@ -178,15 +161,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rand = Int(arc4random_uniform(UInt32(hours.count)))
 
         // 24 * x時間後の時刻を取得
-        //let tomorrow = NSDate(timeIntervalSinceNow: NSTimeInterval(3600 * 24 * x))
+        let tomorrow = NSDate(timeIntervalSinceNow: NSTimeInterval(3600 * 24 * x))
 
         // 時刻だけ更新
-        //let calendar = NSCalendar(identifier: NSGregorianCalendar)!
-        //let date = calendar.dateBySettingHour(hours[rand], minute: 00, second: 0, ofDate: tomorrow, options: nil)!
-
-        //DEBUG: 5秒後に通知を登録する
-        let today = NSDate(timeIntervalSinceNow: 5)
-        let date = today
+        let calendar = NSCalendar(identifier: NSGregorianCalendar)!
+        let date = calendar.dateBySettingHour(hours[rand], minute: 00, second: 0, ofDate: tomorrow, options: nil)!
 
         //XXX: 日本時間とGMT時間考慮してないけどなぜかよしなに設定されている...？
         return date //GMT標準時間
