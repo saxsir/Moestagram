@@ -15,9 +15,6 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 画像保存用のフォルダを作成
-        createPhotoDirectory()
-        
         // カメラロールアクセスの許可をもらう
         requestPhotoLibraryAccessPermission()
         
@@ -46,15 +43,5 @@ class WelcomeViewController: UIViewController {
         })
         
         println("request photo library access permission")
-    }
-    
-    func createPhotoDirectory() {
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        let directoryName = "MoestagramPhotos"
-        
-        let createPath = documentsPath + "/" + directoryName
-        NSFileManager.defaultManager().createDirectoryAtPath(createPath, withIntermediateDirectories: true, attributes: nil, error: nil)
-        
-        println("create photo directory")
     }
 }
