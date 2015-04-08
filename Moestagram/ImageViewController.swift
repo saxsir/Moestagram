@@ -38,7 +38,9 @@ class ImageViewController: UIViewController {
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
             PHAssetChangeRequest.deleteAssets([self.asset])
         }, completionHandler: { (success, error) -> Void in
-            self.performSegueWithIdentifier("removedPhotoSegue", sender: self)
+            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("mainView") as UIViewController
+            mainView.hidesBottomBarWhenPushed = false
+            self.presentViewController(mainView, animated: true, completion: nil)
         })
     }
     
