@@ -12,6 +12,7 @@ import Photos
 class ImageViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var deleteBtn: UIBarButtonItem!
 
     var asset = PHAsset()
     
@@ -32,4 +33,13 @@ class ImageViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func onDeleteBtnTapped(sender: AnyObject) {
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+            PHAssetChangeRequest.deleteAssets([self.asset])
+        }, completionHandler: { (success, error) -> Void in
+            self.performSegueWithIdentifier("removedPhotoSegue", sender: self)
+        })
+    }
+    
 }

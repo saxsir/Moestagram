@@ -135,7 +135,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="7ai-Gp-lZt"/>
-                                    <barButtonItem systemItem="trash" id="ZWk-At-TYA"/>
+                                    <barButtonItem systemItem="trash" id="ZWk-At-TYA">
+                                        <connections>
+                                            <action selector="onDeleteBtnTapped:" destination="XYx-dw-0qT" id="ugV-A6-m9Q"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRt-pc-Wjw">
@@ -161,13 +165,15 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="deleteBtn" destination="ZWk-At-TYA" id="ueu-P5-TQK"/>
                         <outlet property="imageView" destination="t8q-pz-DXD" id="QoQ-we-NZG"/>
+                        <segue destination="vXZ-lx-hvc" kind="presentation" identifier="removedPhotoSegue" id="1mt-kE-UTb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILk-s3-qwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uAh-om-www" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="687.5" y="274.5"/>
+            <point key="canvasLocation" x="706.5" y="274.5"/>
         </scene>
     </scenes>
 </document>
