@@ -27,17 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 初回起動判定
         if NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") == false {
-            //TODO: これだと初回起動した瞬間にダイアログが出るので、タイミングを変えたい
+            
             // push通知（ローカル）の許可をもらう
+            //TODO: これだと初回起動した瞬間にダイアログが出るので、タイミングを変えたい
             requestUserNotificationPermission(application)
             println("requestUserNotificationPermission")
             
             let messages = shuffle(predefinedMessages)
 
             for i in 0..<messages.count {
+                //TODO: リリース時はこっち
                 //let fireDate = generateRandomTimeInXDays(i)
 
-                // DEBUG: i*5秒後に通知をセット
+                //DEBUG: i*5秒後に通知をセット
                 let fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(5 * (i+1)))
 
                 let alertTitle = "研究協力( ｀・∀・´)ﾉﾖﾛｼｸ"
@@ -189,6 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // cf. http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
+    //TODO: swiftの文法を調べる
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
         let count = countElements(list)
         for i in 0..<(count - 1) {
