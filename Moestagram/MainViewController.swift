@@ -103,7 +103,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! UICollectionViewCell
         let asset = self.photoAssets.objectAtIndex(indexPath.row) as! PHAsset
-        let imageView = cell.viewWithTag(1) as UIImageView
+        let imageView = cell.viewWithTag(1) as! UIImageView
         let manager: PHImageManager = PHImageManager()
 
         manager.requestImageForAsset(asset,
@@ -121,7 +121,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if (segue.identifier == "imageTappedSegue") {
             let selectedIndex = self.collectionView.indexPathsForSelectedItems() as! [NSIndexPath]
             let imageViewController: ImageViewController = segue.destinationViewController as! ImageViewController
-            imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as PHAsset
+            imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as! PHAsset
         } else if (segue.identifier == "firstLaunchSegue") {
             let welcomeViewController: WelcomeViewController = segue.destinationViewController as! WelcomeViewController
         }
