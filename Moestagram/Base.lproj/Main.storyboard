@@ -172,7 +172,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILk-s3-qwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uAh-om-www" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="706.5" y="274.5"/>
+            <point key="canvasLocation" x="1102.5" y="274.5"/>
+        </scene>
+        <!--Add Comment View Controller-->
+        <scene sceneID="xDd-As-Kso">
+            <objects>
+                <viewController id="fqy-dZ-fHl" customClass="AddCommentViewController" customModule="Moestagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4tl-tA-FXv"/>
+                        <viewControllerLayoutGuide type="bottom" id="KhB-yd-6SL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jbx-sY-JIN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sjm-fF-eTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102.5" y="1064.5"/>
         </scene>
     </scenes>
 </document>
