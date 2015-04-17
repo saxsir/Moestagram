@@ -12,5 +12,6 @@ import CoreData
 class PhotoStore: NSManagedObject {
 
     @NSManaged var local_identifier: String
+    @NSManaged var comment: String
 
 }
