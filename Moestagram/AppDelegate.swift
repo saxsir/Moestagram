@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "me.saxsir.Moestagram" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -193,7 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // cf. http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
     //TODO: swiftの文法を調べる
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
-        let count = countElements(list)
+        let count = count(list)
         for i in 0..<(count - 1) {
             let j = Int(arc4random_uniform(UInt32(count - i))) + i
             swap(&list[i], &list[j])

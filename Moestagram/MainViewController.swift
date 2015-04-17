@@ -61,7 +61,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.dismissViewControllerAnimated(true, completion: nil)
 
         // 画像をカメラロールに保存
-        let image = info[UIImagePickerControllerOriginalImage] as UIImage
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         UIImageWriteToSavedPhotosAlbum(image, self, "didFinishSavingImage:didFinishSavingWithError:contextInfo:", nil)
     }
     
@@ -72,8 +72,8 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         options.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]
-        let asset = PHAsset.fetchAssetsWithMediaType(.Image, options: options).firstObject as PHAsset
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let asset = PHAsset.fetchAssetsWithMediaType(.Image, options: options).firstObject as! PHAsset
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let photoContext: NSManagedObjectContext = appDel.managedObjectContext!
         let photoEntity: NSEntityDescription! = NSEntityDescription.entityForName("PhotoStore", inManagedObjectContext: photoContext)
         var newData = PhotoStore(entity: photoEntity, insertIntoManagedObjectContext: photoContext)
@@ -101,8 +101,8 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
-        let asset = self.photoAssets.objectAtIndex(indexPath.row) as PHAsset
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let asset = self.photoAssets.objectAtIndex(indexPath.row) as! PHAsset
         let imageView = cell.viewWithTag(1) as UIImageView
         let manager: PHImageManager = PHImageManager()
 
@@ -119,11 +119,11 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "imageTappedSegue") {
-            let selectedIndex = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]
-            let imageViewController: ImageViewController = segue.destinationViewController as ImageViewController
+            let selectedIndex = self.collectionView.indexPathsForSelectedItems() as! [NSIndexPath]
+            let imageViewController: ImageViewController = segue.destinationViewController as! ImageViewController
             imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as PHAsset
         } else if (segue.identifier == "firstLaunchSegue") {
-            let welcomeViewController: WelcomeViewController = segue.destinationViewController as WelcomeViewController
+            let welcomeViewController: WelcomeViewController = segue.destinationViewController as! WelcomeViewController
         }
     }
     
@@ -147,7 +147,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     private func fetchPhotosTakenWithMoestagram() -> PHFetchResult {
         // Moestagramで撮影した画像のid一覧を取得する
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let photoContext: NSManagedObjectContext = appDel.managedObjectContext!
         let photoRequest: NSFetchRequest = NSFetchRequest(entityName: "PhotoStore")
         photoRequest.returnsObjectsAsFaults = false
