@@ -15,6 +15,7 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var deleteBtn: UIBarButtonItem!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var dateLabel: UILabel!
 
     var asset = PHAsset()
     
@@ -31,6 +32,13 @@ class ImageViewController: UIViewController {
                 self.imageView.contentMode = .ScaleAspectFit
                 self.imageView.image = image
         }
+
+        // 撮影日時の表示
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        println(dateFormatter.stringFromDate(self.asset.creationDate))
+        self.dateLabel.text = dateFormatter.stringFromDate(self.asset.creationDate)
 
         // コメントの表示
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
