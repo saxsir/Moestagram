@@ -41,7 +41,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vpv-Ze-0dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Jos-Nl-Hr5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="216.5" y="1052.5"/>
+            <point key="canvasLocation" x="1102.5" y="1988.5"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -113,6 +113,7 @@
                     <connections>
                         <outlet property="collectionView" destination="gXK-ek-2Ik" id="7Au-Os-9GX"/>
                         <segue destination="QiI-cy-LQw" kind="presentation" identifier="firstLaunchSegue" id="P7l-Yd-GSS"/>
+                        <segue destination="fqy-dZ-fHl" kind="showDetail" identifier="addCommentSegue" id="Ul0-Bz-nld"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -199,6 +200,9 @@
                                 <state key="normal" title="コメントを保存する">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="6ug-l3-ZAN" kind="unwind" unwindAction="backFromAddCommentView:" id="DYo-p2-JYI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,6 +210,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjm-fF-eTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6ug-l3-ZAN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1102.5" y="1064.5"/>
         </scene>
