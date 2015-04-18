@@ -14,6 +14,7 @@ class AddCommentViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var saveCommentBtn: UIButton!
+    @IBOutlet weak var commentField: UITextField!
 
     var asset = PHAsset()
 
@@ -65,7 +66,7 @@ class AddCommentViewController: UIViewController {
                     let model = managedObject as! PhotoStore
 
                     // レコードの更新！
-                    model.comment = "hugahuga"
+                    model.comment = self.commentField.text
                 }
             }
 
