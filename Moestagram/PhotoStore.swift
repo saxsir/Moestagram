@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+@objc(PhotoStore)
 class PhotoStore: NSManagedObject {
 
     @NSManaged var local_identifier: String
