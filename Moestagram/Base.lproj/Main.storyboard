@@ -208,6 +208,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="ddP-TB-O3L" id="e39-cF-Y2M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjm-fF-eTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6ug-l3-ZAN" userLabel="Exit" sceneMemberID="exit"/>
