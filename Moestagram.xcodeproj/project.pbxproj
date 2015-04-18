@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E5015FEF1A99F71000844527 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5015FEE1A99F71000844527 /* ImageViewController.swift */; };
+		E5371D611AE24F150082E197 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5371D601AE24F150082E197 /* NotificationStore.swift */; };
 		E573CE321AE16B2D005F6D20 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */; };
 		E5742B591A984A5200369BD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B581A984A5200369BD7 /* AppDelegate.swift */; };
 		E5742B5B1A984A5200369BD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B5A1A984A5200369BD7 /* MainViewController.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		E5015FEE1A99F71000844527 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		E5371D601AE24F150082E197 /* NotificationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationStore.swift; sourceTree = "<group>"; };
 		E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		E5742B531A984A5200369BD7 /* Moestagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moestagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5742B571A984A5200369BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				E5742B581A984A5200369BD7 /* AppDelegate.swift */,
 				E5742B5A1A984A5200369BD7 /* MainViewController.swift */,
 				E5B97AC81ABFE13D00A64A81 /* Moestagram.xcdatamodeld */,
+				E5371D601AE24F150082E197 /* NotificationStore.swift */,
 				E5B97ACB1ABFE2AE00A64A81 /* PhotoStore.swift */,
 				E5742B5C1A984A5200369BD7 /* Main.storyboard */,
 				E5FEE0BB1ABD279200868F5E /* WelcomeViewController.swift */,
@@ -233,6 +236,7 @@
 				E5015FEF1A99F71000844527 /* ImageViewController.swift in Sources */,
 				E5B97ACC1ABFE2AE00A64A81 /* PhotoStore.swift in Sources */,
 				E573CE321AE16B2D005F6D20 /* AddCommentViewController.swift in Sources */,
+				E5371D611AE24F150082E197 /* NotificationStore.swift in Sources */,
 				E5742B591A984A5200369BD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
