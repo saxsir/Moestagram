@@ -201,7 +201,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6ug-l3-ZAN" kind="unwind" unwindAction="backFromAddCommentView:" id="DYo-p2-JYI"/>
+                                    <action selector="onSaveCommentBtnTapped:" destination="fqy-dZ-fHl" eventType="touchUpInside" id="NmV-UE-ThF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -210,10 +210,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="imageView" destination="ddP-TB-O3L" id="e39-cF-Y2M"/>
+                        <outlet property="saveCommentBtn" destination="pVM-dk-EoN" id="InC-Yi-zyA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjm-fF-eTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="6ug-l3-ZAN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1102.5" y="1064.5"/>
         </scene>

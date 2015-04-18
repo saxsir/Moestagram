@@ -12,6 +12,7 @@ import Photos
 class AddCommentViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var saveCommentBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,4 +39,9 @@ class AddCommentViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+
+    @IBAction func onSaveCommentBtnTapped(sender: AnyObject) {
+        // mainViewに戻る
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
 }
