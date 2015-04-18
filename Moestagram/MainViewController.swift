@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var collectionView: UICollectionView!
     var photoAssets = PHFetchResult()
     var tappedCellIndex = 0
+    var takenPhotoFlg = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,12 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") == false {
             println("move to Welcome View")
             self.performSegueWithIdentifier("firstLaunchSegue", sender: self)
+        }
+
+        // 写真撮影後はコメント追加画面に遷移
+        if (self.takenPhotoFlg) {
+            self.takenPhotoFlg = false
+            self.performSegueWithIdentifier("addCommentSegue", sender: self)
         }
     }
     
@@ -78,10 +85,11 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let photoEntity: NSEntityDescription! = NSEntityDescription.entityForName("PhotoStore", inManagedObjectContext: photoContext)
         var newData = PhotoStore(entity: photoEntity, insertIntoManagedObjectContext: photoContext)
         newData.local_identifier = asset.localIdentifier
+        newData.comment = ""
         var err: NSError? = nil
         photoContext.save(&err)
         
-        // 画面をリロード
+        self.takenPhotoFlg = true
         self.viewDidLoad()
     }
     
@@ -124,6 +132,8 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imageViewController.asset = self.photoAssets.objectAtIndex(selectedIndex[0].row) as! PHAsset
         } else if (segue.identifier == "firstLaunchSegue") {
             let welcomeViewController: WelcomeViewController = segue.destinationViewController as! WelcomeViewController
+        } else if (segue.identifier == "addCommentSegue") {
+            let addCommentViewController: AddCommentViewController = segue.destinationViewController as! AddCommentViewController
         }
     }
     
@@ -131,6 +141,9 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.viewDidLoad()
     }
     @IBAction func backFromWelcomeView(segue:UIStoryboardSegue){
+        self.viewDidLoad()
+    }
+    @IBAction func backFromAddCommentView(segue:UIStoryboardSegue){
         self.viewDidLoad()
     }
 

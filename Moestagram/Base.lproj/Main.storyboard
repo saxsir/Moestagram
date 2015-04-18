@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -41,7 +41,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vpv-Ze-0dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Jos-Nl-Hr5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="216.5" y="1052.5"/>
+            <point key="canvasLocation" x="1102.5" y="1988.5"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -113,6 +113,7 @@
                     <connections>
                         <outlet property="collectionView" destination="gXK-ek-2Ik" id="7Au-Os-9GX"/>
                         <segue destination="QiI-cy-LQw" kind="presentation" identifier="firstLaunchSegue" id="P7l-Yd-GSS"/>
+                        <segue destination="fqy-dZ-fHl" kind="showDetail" identifier="addCommentSegue" id="Ul0-Bz-nld"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -155,8 +156,14 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t8q-pz-DXD">
-                                <rect key="frame" x="0.0" y="61" width="375" height="569"/>
+                                <rect key="frame" x="0.0" y="61" width="375" height="515"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ra-ZI-CJv">
+                                <rect key="frame" x="16" y="575" width="343" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -165,6 +172,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="commentTextView" destination="2ra-ZI-CJv" id="IUz-oT-Dyv"/>
                         <outlet property="deleteBtn" destination="ZWk-At-TYA" id="ueu-P5-TQK"/>
                         <outlet property="imageView" destination="t8q-pz-DXD" id="QoQ-we-NZG"/>
                     </connections>
@@ -172,7 +180,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILk-s3-qwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uAh-om-www" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="706.5" y="274.5"/>
+            <point key="canvasLocation" x="1102.5" y="274.5"/>
+        </scene>
+        <!--Add Comment View Controller-->
+        <scene sceneID="xDd-As-Kso">
+            <objects>
+                <viewController id="fqy-dZ-fHl" customClass="AddCommentViewController" customModule="Moestagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4tl-tA-FXv"/>
+                        <viewControllerLayoutGuide type="bottom" id="KhB-yd-6SL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jbx-sY-JIN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-TB-O3L">
+                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVM-dk-EoN">
+                                <rect key="frame" x="120" y="84" width="135" height="30"/>
+                                <state key="normal" title="コメントを保存する">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSaveCommentBtnTapped:" destination="fqy-dZ-fHl" eventType="touchUpInside" id="NmV-UE-ThF"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4r-D8-UTi">
+                                <rect key="frame" x="16" y="28" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="commentField" destination="M4r-D8-UTi" id="yEc-jQ-o67"/>
+                        <outlet property="imageView" destination="ddP-TB-O3L" id="e39-cF-Y2M"/>
+                        <outlet property="saveCommentBtn" destination="pVM-dk-EoN" id="InC-Yi-zyA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sjm-fF-eTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102.5" y="1064.5"/>
         </scene>
     </scenes>
 </document>

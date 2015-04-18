@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E5015FEF1A99F71000844527 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5015FEE1A99F71000844527 /* ImageViewController.swift */; };
+		E573CE321AE16B2D005F6D20 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */; };
 		E5742B591A984A5200369BD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B581A984A5200369BD7 /* AppDelegate.swift */; };
 		E5742B5B1A984A5200369BD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B5A1A984A5200369BD7 /* MainViewController.swift */; };
 		E5742B5E1A984A5200369BD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5742B5C1A984A5200369BD7 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		E5015FEE1A99F71000844527 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		E5742B531A984A5200369BD7 /* Moestagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moestagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5742B571A984A5200369BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5742B581A984A5200369BD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				E5742B5C1A984A5200369BD7 /* Main.storyboard */,
 				E5FEE0BB1ABD279200868F5E /* WelcomeViewController.swift */,
 				E5015FEE1A99F71000844527 /* ImageViewController.swift */,
+				E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */,
 				E5742B5F1A984A5200369BD7 /* Images.xcassets */,
 				E5742B611A984A5200369BD7 /* LaunchScreen.xib */,
 				E5742B561A984A5200369BD7 /* Supporting Files */,
@@ -229,6 +232,7 @@
 				E5FEE0BC1ABD279200868F5E /* WelcomeViewController.swift in Sources */,
 				E5015FEF1A99F71000844527 /* ImageViewController.swift in Sources */,
 				E5B97ACC1ABFE2AE00A64A81 /* PhotoStore.swift in Sources */,
+				E573CE321AE16B2D005F6D20 /* AddCommentViewController.swift in Sources */,
 				E5742B591A984A5200369BD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
