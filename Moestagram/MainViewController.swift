@@ -85,6 +85,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let photoEntity: NSEntityDescription! = NSEntityDescription.entityForName("PhotoStore", inManagedObjectContext: photoContext)
         var newData = PhotoStore(entity: photoEntity, insertIntoManagedObjectContext: photoContext)
         newData.local_identifier = asset.localIdentifier
+        newData.comment = ""
         var err: NSError? = nil
         photoContext.save(&err)
         
