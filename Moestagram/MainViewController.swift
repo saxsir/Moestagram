@@ -20,6 +20,14 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         
         if PHPhotoLibrary.authorizationStatus() == .Authorized {
             self.photoAssets = fetchPhotosTakenWithMoestagram()
@@ -29,12 +37,9 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             println("reload collection view")
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
         // 初回起動時のみWelcomeViewControllerに遷移
         if NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") == false {
             println("move to Welcome View")
@@ -45,7 +50,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if (self.takenPhotoFlg) {
             self.takenPhotoFlg = false
             self.performSegueWithIdentifier("addCommentSegue", sender: self)
-        }
+        }        
     }
     
     /**
