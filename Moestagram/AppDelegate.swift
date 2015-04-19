@@ -13,13 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     let predefinedMessages = [
-        "空を背景に写真を撮ってみよう！",
-        "海を背景に写真を撮ってみよう！",
-        "山を背景に写真を撮ってみよう！",
-        "川を背景に写真を撮ってみよう！",
-        "建物を背景に写真を撮ってみよう！"
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
     ]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
