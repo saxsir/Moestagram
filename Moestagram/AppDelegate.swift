@@ -155,8 +155,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         alert.message = notification.alertBody
         alert.addButtonWithTitle(notification.alertAction!)
         alert.show()
-        
+
         println("show alert when notification fired while app using")
+
+        // 通知をチェック済みに更新
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            let entityDiscription = NSEntityDescription.entityForName("NotificationStore", inManagedObjectContext: managedObjectContext)
+            let fetchRequest = NSFetchRequest()
+            fetchRequest.entity = entityDiscription
+            // 一番直近の通知を取得
+            fetchRequest.fetchLimit = 1
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fire_date", ascending: false)]
+            let predicate = NSPredicate(format: "%K <= %@", "fire_date", NSDate())
+            fetchRequest.predicate = predicate
+
+            var error: NSError? = nil
+            if var results:NSArray = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) {
+                for managedObject in results {
+                    let model = managedObject as! NotificationStore
+                    model.is_checked = true
+                }
+            }
+        }
+
     }
 
     /**
