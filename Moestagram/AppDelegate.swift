@@ -47,7 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 addLocalNotification(fireDate, alertTitle: alertTitle, alertBody: alertBody)
             }
         }
-        
+
+        // アプリ起動時に、見てない通知があったら表示
+        showFiredLocalNotification()
+
         return true
     }
 
@@ -67,6 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+        // 復帰時（バックグラウンド→開いた時）に、見てない通知があったら表示
+        showFiredLocalNotification()
     }
 
     func applicationWillTerminate(application: UIApplication) {
