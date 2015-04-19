@@ -13,13 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     let predefinedMessages = [
-        "空を背景に写真を撮ってみよう！",
-        "海を背景に写真を撮ってみよう！",
-        "山を背景に写真を撮ってみよう！",
-        "川を背景に写真を撮ってみよう！",
-        "建物を背景に写真を撮ってみよう！"
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
     ]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -47,7 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 addLocalNotification(fireDate, alertTitle: alertTitle, alertBody: alertBody)
             }
         }
-        
+
+        // アプリ起動時に、見てない通知があったら表示
+        showFiredLocalNotification()
+
         return true
     }
 
@@ -67,6 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+        // 復帰時（バックグラウンド→開いた時）に、見てない通知があったら表示
+        showFiredLocalNotification()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -149,8 +155,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         alert.message = notification.alertBody
         alert.addButtonWithTitle(notification.alertAction!)
         alert.show()
-        
+
         println("show alert when notification fired while app using")
+
+        // 通知をチェック済みに更新
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            let entityDiscription = NSEntityDescription.entityForName("NotificationStore", inManagedObjectContext: managedObjectContext)
+            let fetchRequest = NSFetchRequest()
+            fetchRequest.entity = entityDiscription
+            // 一番直近の通知を取得
+            fetchRequest.fetchLimit = 1
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fire_date", ascending: false)]
+            let predicate = NSPredicate(format: "%K <= %@", "fire_date", NSDate())
+            fetchRequest.predicate = predicate
+
+            var error: NSError? = nil
+            if var results:NSArray = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) {
+                for managedObject in results {
+                    let model = managedObject as! NotificationStore
+                    model.is_checked = true
+                }
+            }
+        }
+
     }
 
     /**
@@ -182,14 +210,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notification.alertAction = "OK"
         notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+
+        // データベースにも登録
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            let entityDescription = NSEntityDescription.entityForName("NotificationStore", inManagedObjectContext: managedObjectContext)
+            var newData = NotificationStore(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+            newData.title = alertTitle
+            newData.body = alertBody
+            newData.fire_date = fireDate
+            newData.is_checked = false
+            var err: NSError? = nil
+            managedObjectContext.save(&err)
+        }
     }
-    
+
     func requestUserNotificationPermission(application: UIApplication) {
         //TODO: 許可がもらえなかった場合の処理を追加する
         let settings = UIUserNotificationSettings( forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert, categories: nil)
         application.registerUserNotificationSettings(settings)
     }
-    
+
     // cf. http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
     //TODO: swiftの文法を調べる
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
@@ -199,5 +240,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             swap(&list[i], &list[j])
         }
         return list
+    }
+
+    // 見ていない通知を表示する
+    func showFiredLocalNotification() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            // EntityDescriptionのインスタンスを生成
+            let entityDiscription = NSEntityDescription.entityForName("NotificationStore", inManagedObjectContext: managedObjectContext)
+            let fetchRequest = NSFetchRequest()
+            fetchRequest.entity = entityDiscription
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fire_date", ascending: true)]
+            let predicate = NSPredicate(format: "%K <= %@ AND %K = %@", "fire_date", NSDate(), "is_checked", false)
+            fetchRequest.predicate = predicate
+
+            var error: NSError? = nil
+            // フェッチリクエストの実行
+            if var results:NSArray = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) {
+                println(results.count)
+                for managedObject in results {
+                    let model = managedObject as! NotificationStore
+                    model.is_checked = true
+
+                    // アラート表示
+                    var alert = UIAlertView()
+                    alert.title = model.title
+                    alert.message = model.body
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
+                }
+            }
+        }
     }
 }
