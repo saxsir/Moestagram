@@ -213,4 +213,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return list
     }
+
+    // 見ていない通知を表示する
+    func showFiredLocalNotification() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            // EntityDescriptionのインスタンスを生成
+            let entityDiscription = NSEntityDescription.entityForName("NotificationStore", inManagedObjectContext: managedObjectContext)
+            let fetchRequest = NSFetchRequest()
+            fetchRequest.entity = entityDiscription
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "fire_date", ascending: true)]
+            let predicate = NSPredicate(format: "%K <= %@ AND %K = %@", "fire_date", NSDate(), "is_checked", false)
+            fetchRequest.predicate = predicate
+
+            var error: NSError? = nil
+            // フェッチリクエストの実行
+            if var results:NSArray = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) {
+                println(results.count)
+                for managedObject in results {
+                    let model = managedObject as! NotificationStore
+                    model.is_checked = true
+
+                    // アラート表示
+                    var alert = UIAlertView()
+                    alert.title = model.title
+                    alert.message = model.body
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
+                }
+            }
+        }
+    }
 }
