@@ -182,14 +182,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notification.alertAction = "OK"
         notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+
+        // データベースにも登録
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let managedObjectContext = appDelegate.managedObjectContext {
+            let entityDescription = NSEntityDescription.entityForName("NotificationStore", inManagedObjectContext: managedObjectContext)
+            var newData = NotificationStore(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+            newData.title = alertTitle
+            newData.body = alertBody
+            newData.fire_date = fireDate
+            newData.is_checked = false
+            var err: NSError? = nil
+            managedObjectContext.save(&err)
+        }
     }
-    
+
     func requestUserNotificationPermission(application: UIApplication) {
         //TODO: 許可がもらえなかった場合の処理を追加する
         let settings = UIUserNotificationSettings( forTypes: UIUserNotificationType.Badge | UIUserNotificationType.Sound | UIUserNotificationType.Alert, categories: nil)
         application.registerUserNotificationSettings(settings)
     }
-    
+
     // cf. http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
     //TODO: swiftの文法を調べる
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
