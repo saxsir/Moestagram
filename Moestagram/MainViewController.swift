@@ -14,7 +14,7 @@ import CoreData
 class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var photoAssets = PHFetchResult()
+    var photoAssets = PHFetchResult() as PHFetchResult!
     var tappedCellIndex = 0
     var takenPhotoFlg = false
 
@@ -101,11 +101,16 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if PHPhotoLibrary.authorizationStatus() == .Authorized {
-            return self.photoAssets.count
-        } else {
+        
+        if PHPhotoLibrary.authorizationStatus() != .Authorized {
             return 0
         }
+        
+        if self.photoAssets == nil {
+            return 0
+        }
+        
+        return self.photoAssets.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -158,7 +163,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.presentViewController(picker, animated: true, completion: nil)
     }
 
-    private func fetchPhotosTakenWithMoestagram() -> PHFetchResult {
+    private func fetchPhotosTakenWithMoestagram() -> PHFetchResult! {
         // Moestagramで撮影した画像のid一覧を取得する
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let photoContext: NSManagedObjectContext = appDel.managedObjectContext!
@@ -179,12 +184,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         options.sortDescriptors = [
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]
-        
-        if local_identifiers.count > 0 {
-            return PHAsset.fetchAssetsWithLocalIdentifiers(local_identifiers, options: options)
-        } else {
-            // TODO: 本当は return PHFetchResult() したいが、self.photoAssets.countでエラーになるのでとりあえずこうしとく
-            return PHAsset.fetchAssetsWithMediaType(.Image, options: options)
-        }
+
+        return PHAsset.fetchAssetsWithLocalIdentifiers(local_identifiers, options: options)
     }
 }
