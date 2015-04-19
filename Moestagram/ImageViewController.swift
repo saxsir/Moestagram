@@ -71,5 +71,4 @@ class ImageViewController: UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         })
     }
-    
 }
