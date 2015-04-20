@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import CoreData
 
-class AddCommentViewController: UIViewController {
+class AddCommentViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var saveCommentBtn: UIButton!
@@ -37,8 +37,17 @@ class AddCommentViewController: UIViewController {
                 self.imageView.contentMode = .ScaleAspectFit
                 self.imageView.image = image
         }
+
+        // textFiel の情報を受け取るための delegate を設定
+        commentField.delegate = self
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        return true
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -76,5 +85,9 @@ class AddCommentViewController: UIViewController {
 
         // mainViewに戻る
         self.dismissViewControllerAnimated(false, completion: nil)
+    }
+
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        commentField.resignFirstResponder()
     }
 }
