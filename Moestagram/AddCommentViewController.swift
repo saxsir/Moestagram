@@ -54,6 +54,16 @@ class AddCommentViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func onSaveCommentBtnTapped(sender: AnyObject) {
+        // コメントが入力されていなかったらエラーを表示
+        if self.commentField.text.isEmpty {
+            var alert = UIAlertView()
+            alert.title = "コメントが空欄です"
+            alert.message = "コメントに何か書いてから保存してください"
+            alert.addButtonWithTitle("OK")
+            alert.show()
+            return
+        }
+
         // AppDelegateクラスのインスタンスを取得
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         // AppDelegateクラスからNSManagedObjectContextを取得
