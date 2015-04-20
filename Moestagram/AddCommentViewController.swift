@@ -86,4 +86,8 @@ class AddCommentViewController: UIViewController, UITextFieldDelegate {
         // mainViewに戻る
         self.dismissViewControllerAnimated(false, completion: nil)
     }
+
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        commentField.resignFirstResponder()
+    }
 }
