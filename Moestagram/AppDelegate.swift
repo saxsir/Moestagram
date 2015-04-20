@@ -194,7 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rand = Int(arc4random_uniform(UInt32(hours.count)))
 
         // 24 * x時間後の時刻を取得
-        let tomorrow = NSDate(timeIntervalSinceNow: NSTimeInterval(3600 * 24 * x))
+        let tomorrow = NSDate(timeIntervalSinceNow: NSTimeInterval(3600 * 24 * (x+1)))
 
         // 時刻だけ更新
         let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
