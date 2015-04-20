@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             requestUserNotificationPermission(application)
             println("requestUserNotificationPermission")
             
+            // 登録されている通知を全てキャンセル
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+
             let messages = shuffle(predefinedMessages)
 
             for i in 0..<messages.count {
