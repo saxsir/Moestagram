@@ -95,7 +95,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         photoContext.save(&err)
         
         self.takenPhotoFlg = true
-        self.viewDidLoad()
+        self.viewDidAppear(false)
     }
     
     /**
