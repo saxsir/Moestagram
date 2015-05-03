@@ -264,6 +264,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 for managedObject in results {
                     let model = managedObject as! NotificationStore
                     model.is_checked = true
+                    var err: NSError? = nil
+                    managedObjectContext.save(&err)
 
                     // アラート表示
                     var alert = UIAlertView()
