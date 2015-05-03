@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E3705252AFA2C569AFD1D143 /* libPods-Moestagram.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39768639C0ADB7D6EF2B079 /* libPods-Moestagram.a */; };
 		E5015FEF1A99F71000844527 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5015FEE1A99F71000844527 /* ImageViewController.swift */; };
+		E523C33C1AF624610044828F /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E523C33B1AF624610044828F /* sample.jpg */; };
 		E5371D611AE24F150082E197 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5371D601AE24F150082E197 /* NotificationStore.swift */; };
 		E573CE321AE16B2D005F6D20 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */; };
 		E5742B591A984A5200369BD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B581A984A5200369BD7 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		B73BA47A77347226DFF671CD /* Pods-Moestagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moestagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moestagram/Pods-Moestagram.release.xcconfig"; sourceTree = "<group>"; };
 		C39768639C0ADB7D6EF2B079 /* libPods-Moestagram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Moestagram.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5015FEE1A99F71000844527 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		E523C33B1AF624610044828F /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		E523C33D1AF62E2B0044828F /* Moestagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moestagram-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5371D601AE24F150082E197 /* NotificationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationStore.swift; sourceTree = "<group>"; };
 		E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		E5742B551A984A5200369BD7 /* Moestagram */ = {
 			isa = PBXGroup;
 			children = (
+				E523C33B1AF624610044828F /* sample.jpg */,
 				E5742B581A984A5200369BD7 /* AppDelegate.swift */,
 				E5742B5A1A984A5200369BD7 /* MainViewController.swift */,
 				E5B97AC81ABFE13D00A64A81 /* Moestagram.xcdatamodeld */,
@@ -241,6 +244,7 @@
 				E5742B5E1A984A5200369BD7 /* Main.storyboard in Resources */,
 				E5742B631A984A5200369BD7 /* LaunchScreen.xib in Resources */,
 				E5742B601A984A5200369BD7 /* Images.xcassets in Resources */,
+				E523C33C1AF624610044828F /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
