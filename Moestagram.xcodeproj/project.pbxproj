@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3705252AFA2C569AFD1D143 /* libPods-Moestagram.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39768639C0ADB7D6EF2B079 /* libPods-Moestagram.a */; };
 		E5015FEF1A99F71000844527 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5015FEE1A99F71000844527 /* ImageViewController.swift */; };
 		E5371D611AE24F150082E197 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5371D601AE24F150082E197 /* NotificationStore.swift */; };
 		E573CE321AE16B2D005F6D20 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */; };
@@ -32,7 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08F2CA3A1FE97385B483159A /* Pods-Moestagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moestagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moestagram/Pods-Moestagram.debug.xcconfig"; sourceTree = "<group>"; };
+		B73BA47A77347226DFF671CD /* Pods-Moestagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moestagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moestagram/Pods-Moestagram.release.xcconfig"; sourceTree = "<group>"; };
+		C39768639C0ADB7D6EF2B079 /* libPods-Moestagram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Moestagram.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5015FEE1A99F71000844527 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		E523C33D1AF62E2B0044828F /* Moestagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moestagram-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5371D601AE24F150082E197 /* NotificationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationStore.swift; sourceTree = "<group>"; };
 		E573CE311AE16B2D005F6D20 /* AddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		E5742B531A984A5200369BD7 /* Moestagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moestagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3705252AFA2C569AFD1D143 /* libPods-Moestagram.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +74,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD7D37F707E484FDEF2C142A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C39768639C0ADB7D6EF2B079 /* libPods-Moestagram.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E5742B4A1A984A5200369BD7 = {
 			isa = PBXGroup;
 			children = (
 				E5742B551A984A5200369BD7 /* Moestagram */,
 				E5742B6B1A984A5300369BD7 /* MoestagramTests */,
 				E5742B541A984A5200369BD7 /* Products */,
+				E523C33D1AF62E2B0044828F /* Moestagram-Bridging-Header.h */,
+				F8A20A4AB207C87DB8F2CBE0 /* Pods */,
+				DD7D37F707E484FDEF2C142A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +147,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F8A20A4AB207C87DB8F2CBE0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				08F2CA3A1FE97385B483159A /* Pods-Moestagram.debug.xcconfig */,
+				B73BA47A77347226DFF671CD /* Pods-Moestagram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5742B721A984A5300369BD7 /* Build configuration list for PBXNativeTarget "Moestagram" */;
 			buildPhases = (
+				6C4BCEA5D1B288B2D1E76823 /* Check Pods Manifest.lock */,
 				E5742B4F1A984A5200369BD7 /* Sources */,
 				E5742B501A984A5200369BD7 /* Frameworks */,
 				E5742B511A984A5200369BD7 /* Resources */,
+				58E7C85E69BF854DE6A0A848 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,6 +252,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		58E7C85E69BF854DE6A0A848 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moestagram/Pods-Moestagram-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C4BCEA5D1B288B2D1E76823 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5742B4F1A984A5200369BD7 /* Sources */ = {
@@ -358,21 +419,28 @@
 		};
 		E5742B731A984A5300369BD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08F2CA3A1FE97385B483159A /* Pods-Moestagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Moestagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Moestagram-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		E5742B741A984A5300369BD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B73BA47A77347226DFF671CD /* Pods-Moestagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Moestagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Moestagram-Bridging-Header.h";
 			};
 			name = Release;
 		};
