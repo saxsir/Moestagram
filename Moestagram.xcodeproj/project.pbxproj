@@ -18,6 +18,9 @@
 		E5742B601A984A5200369BD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5742B5F1A984A5200369BD7 /* Images.xcassets */; };
 		E5742B631A984A5200369BD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5742B611A984A5200369BD7 /* LaunchScreen.xib */; };
 		E5742B6F1A984A5300369BD7 /* MoestagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5742B6E1A984A5300369BD7 /* MoestagramTests.swift */; };
+		E585A31E1AF64F640008B5CA /* sample2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E585A31D1AF64F640008B5CA /* sample2.jpg */; };
+		E585A3211AF654C60008B5CA /* sample4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E585A31F1AF654C60008B5CA /* sample4.jpg */; };
+		E585A3221AF654C60008B5CA /* sample3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E585A3201AF654C60008B5CA /* sample3.jpg */; };
 		E5B97ACA1ABFE13D00A64A81 /* Moestagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5B97AC81ABFE13D00A64A81 /* Moestagram.xcdatamodeld */; };
 		E5B97ACC1ABFE2AE00A64A81 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B97ACB1ABFE2AE00A64A81 /* PhotoStore.swift */; };
 		E5FEE0BC1ABD279200868F5E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FEE0BB1ABD279200868F5E /* WelcomeViewController.swift */; };
@@ -52,6 +55,9 @@
 		E5742B681A984A5300369BD7 /* MoestagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoestagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5742B6D1A984A5300369BD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5742B6E1A984A5300369BD7 /* MoestagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoestagramTests.swift; sourceTree = "<group>"; };
+		E585A31D1AF64F640008B5CA /* sample2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample2.jpg; sourceTree = "<group>"; };
+		E585A31F1AF654C60008B5CA /* sample4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample4.jpg; sourceTree = "<group>"; };
+		E585A3201AF654C60008B5CA /* sample3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample3.jpg; sourceTree = "<group>"; };
 		E5B97AC91ABFE13D00A64A81 /* Moestagram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moestagram.xcdatamodel; sourceTree = "<group>"; };
 		E5B97ACB1ABFE2AE00A64A81 /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
 		E5FEE0BB1ABD279200868F5E /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +114,7 @@
 		E5742B551A984A5200369BD7 /* Moestagram */ = {
 			isa = PBXGroup;
 			children = (
-				E523C33B1AF624610044828F /* sample.jpg */,
+				E595AC2A1AF7351B007B6FCC /* Resources */,
 				E5742B581A984A5200369BD7 /* AppDelegate.swift */,
 				E5742B5A1A984A5200369BD7 /* MainViewController.swift */,
 				E5B97AC81ABFE13D00A64A81 /* Moestagram.xcdatamodeld */,
@@ -148,6 +154,17 @@
 				E5742B6D1A984A5300369BD7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E595AC2A1AF7351B007B6FCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E585A31F1AF654C60008B5CA /* sample4.jpg */,
+				E585A3201AF654C60008B5CA /* sample3.jpg */,
+				E585A31D1AF64F640008B5CA /* sample2.jpg */,
+				E523C33B1AF624610044828F /* sample.jpg */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		F8A20A4AB207C87DB8F2CBE0 /* Pods */ = {
@@ -243,8 +260,11 @@
 			files = (
 				E5742B5E1A984A5200369BD7 /* Main.storyboard in Resources */,
 				E5742B631A984A5200369BD7 /* LaunchScreen.xib in Resources */,
+				E585A31E1AF64F640008B5CA /* sample2.jpg in Resources */,
 				E5742B601A984A5200369BD7 /* Images.xcassets in Resources */,
+				E585A3211AF654C60008B5CA /* sample4.jpg in Resources */,
 				E523C33C1AF624610044828F /* sample.jpg in Resources */,
+				E585A3221AF654C60008B5CA /* sample3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
