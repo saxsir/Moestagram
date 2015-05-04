@@ -154,27 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // アプリ起動中に通知がきたらアプリ上に表示する
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
-        // 通知を表示
-        var containerView = UIView(frame: CGRectMake(0, 0, 300, 300))
-        var titleLabel = UILabel(frame: CGRectMake(50, 50, 250, 20))
-        titleLabel.text = "萠さんが悶そうな画像"
-
-        var alertImageView = UIImageView(frame: CGRectMake(0, 75, 300, 225))
-        alertImageView.image = UIImage(named: "sample2.jpg")
-        
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(alertImageView)
-        
-        var cav = CustomIOSAlertView()
-        cav.containerView = containerView
-        cav.show()
-
-        //var alert = UIAlertView()
-        //alert.title = notification.alertTitle
-        //alert.message = notification.alertBody
-        //alert.addButtonWithTitle(notification.alertAction!)
-        //alert.show()
-
         println("show alert when notification fired while app using")
 
         // 通知をチェック済みに更新
@@ -194,6 +173,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 for managedObject in results {
                     let model = managedObject as! NotificationStore
                     model.is_checked = true
+                    
+                    // 通知を表示
+                    var containerView = UIView(frame: CGRectMake(0, 0, 300, 300))
+                    var titleLabel = UILabel(frame: CGRectMake(50, 50, 250, 20))
+                    titleLabel.text = model.title
+                    var alertImageView = UIImageView(frame: CGRectMake(0, 75, 300, 225))
+                    alertImageView.image = UIImage(named: model.image_file)
+                    containerView.addSubview(titleLabel)
+                    containerView.addSubview(alertImageView)
+                    var cav = CustomIOSAlertView()
+                    cav.containerView = containerView
+                    cav.show()
                 }
             }
         }
@@ -284,26 +275,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     var err: NSError? = nil
                     managedObjectContext.save(&err)
 
-                    // アラート表示
-                    /*
-                    var alert = UIAlertView()
-                    alert.title = model.title
-                    alert.message = model.body
-                    alert.addButtonWithTitle("OK")
-                    alert.show()
-                    */
-                    
                     // 通知を表示
-                    var containerView = UIView(frame: CGRectMake(0, 0, 300, 300))
+                    var containerView = UIView(frame: CGRectMake(0, 0, 300, 400))
                     var titleLabel = UILabel(frame: CGRectMake(50, 50, 250, 20))
-                    titleLabel.text = "萠さんが悶そうな画像2"
-                    
+                    titleLabel.text = model.title
                     var alertImageView = UIImageView(frame: CGRectMake(0, 75, 300, 225))
-                    alertImageView.image = UIImage(named: "sample3.jpg")
-                    
+                    alertImageView.image = UIImage(named: model.image_file)
                     containerView.addSubview(titleLabel)
                     containerView.addSubview(alertImageView)
-                    
                     var cav = CustomIOSAlertView()
                     cav.containerView = containerView
                     cav.show()
