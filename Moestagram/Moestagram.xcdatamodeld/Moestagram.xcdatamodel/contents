@@ -3,6 +3,7 @@
     <entity name="NotificationStore" representedClassName="NotificationStore" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fire_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="image_file" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="is_checked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -11,7 +12,7 @@
         <attribute name="local_identifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="NotificationStore" positionX="-63" positionY="0" width="128" height="120"/>
         <element name="PhotoStore" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="NotificationStore" positionX="-63" positionY="0" width="128" height="105"/>
     </elements>
 </model>

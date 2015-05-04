@@ -16,5 +16,6 @@ class NotificationStore: NSManagedObject {
     @NSManaged var body: String
     @NSManaged var fire_date: NSDate
     @NSManaged var is_checked: Bool
+    @NSManaged var image_file: String
 
 }

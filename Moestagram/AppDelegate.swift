@@ -15,11 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let predefinedMessages = [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
+        ["message": "1", "image": "sample.jpg"],
+        ["message": "2", "image": "sample2.jpg"],
+        ["message": "3", "image": "sample3.jpg"],
+        ["message": "4", "image": "sample4.jpg"]
     ]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -45,9 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //DEBUG: i*5秒後に通知をセット
                 let fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(5 * (i+1)))
 
-                let alertTitle = "研究協力( ｀・∀・´)ﾉﾖﾛｼｸ"
-                let alertBody = messages[i]
-                addLocalNotification(fireDate, alertTitle: alertTitle, alertBody: alertBody)
+                let alertTitle = "(//∇//)"
+                let alertBody = messages[i]["message"]
+                let alertImage = messages[i]["image"]
+                addLocalNotification(fireDate, alertTitle: alertTitle, alertBody: alertBody!, alertImage: alertImage!)
             }
         }
 
@@ -221,12 +221,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // ローカル通知を登録する関数
-    func addLocalNotification(fireDate: NSDate, alertTitle: String, alertBody: String) {
+    func addLocalNotification(fireDate: NSDate, alertTitle: String, alertBody: String, alertImage: String) {
         var notification = UILocalNotification()
         notification.fireDate = fireDate
         notification.alertTitle = alertTitle
         notification.alertBody = alertBody
-        notification.alertAction = "OK"
+        //notification.alertAction = "OK"
         notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
 
@@ -239,6 +239,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             newData.body = alertBody
             newData.fire_date = fireDate
             newData.is_checked = false
+            newData.image_file = alertImage
             var err: NSError? = nil
             managedObjectContext.save(&err)
         }
