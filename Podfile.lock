@@ -1,0 +1,10 @@
+PODS:
+  - CustomIOSAlertView (0.9.3)
+
+DEPENDENCIES:
+  - CustomIOSAlertView (~> 0.9.3)
+
+SPEC CHECKSUMS:
+  CustomIOSAlertView: 94d2401e34fcfb0ac0134679d6947f5e251b0446
+
+COCOAPODS: 0.37.0
